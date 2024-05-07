@@ -4,7 +4,7 @@ Olá, sou Jean Jerri Rocha Bento da Silva, moro na cidade de Barra do Choça - B
 
 ## Sprints
 
-1. [Sprint 1](Sprint%1\Desafio\README.md)
+1. [Sprint 1](\Sprint%1\)
 
 ---
 
