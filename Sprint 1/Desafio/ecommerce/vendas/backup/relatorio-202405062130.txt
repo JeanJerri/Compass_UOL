@@ -1,0 +1,21 @@
+RelatÃ³rio gerado em: 2024/05/06 21:30
+ 
+Data do primeiro registro de venda: 01/04/2023
+ 
+Data do Ãºltimo registro de venda: 10/05/2023
+ 
+Quantidade total de itens diferentes vendidos: 41
+ 
+Primeiras 10 linhas do arquivo backup-dados-2024050621:30.csv:
+id,produto,quantidade,preÃ§o,data
+1,teclado sem fio,3,49.99,01/04/2023
+2,mouse óptico,5,19.99,02/04/2023
+3,monitor de 24 polegadas,2,199.00,03/04/2023
+4,placa de vídeo AMD RX 6800,1,899.00,04/04/2023
+5,processador Intel Core i9-12900K,1,599.00,05/04/2023
+6,memória RAM DDR5 32GB,4,149.99,06/04/2023
+7,SSD NVMe 2TB,2,249.99,07/04/2023
+8,HD Externo 4TB,1,129.99,08/04/2023
+9,impressora a laser colorida,1,299.00,09/04/2023
+ 
+ 

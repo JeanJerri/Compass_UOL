@@ -1,0 +1,65 @@
+id,produto,quantidade,preÃ§o,data
+1,caneta esferográfica azul,10,0.99,01/06/2023
+2,caneta esferográfica preta,15,0.99,02/06/2023
+3,marca-texto amarelo,5,1.49,03/06/2023
+4,marca-texto verde,3,1.49,04/06/2023
+5,estojo de lápis de cor,2,4.99,05/06/2023
+6,borracha branca,20,0.50,06/06/2023
+7,apontador de lápis,8,1.00,07/06/2023
+8,caderno universitário 100 folhas,5,3.99,08/06/2023
+9,agenda semanal,3,5.99,09/06/2023
+10,pasta com elástico,6,2.49,10/06/2023
+11,clips metálico,50,0.10,11/06/2023
+12,grampeador pequeno,3,2.99,12/06/2023
+13,grampos para grampeador,100,0.05,13/06/2023
+14,post-it,10,1.99,14/06/2023
+15,régua plástica transparente 30cm,5,0.99,15/06/2023
+16,tesoura escolar,4,1.99,16/06/2023
+17,livro de colorir para adultos,2,6.99,17/06/2023
+18,jogo de tabuleiro,1,19.99,18/06/2023
+19,quebra-cabeça 1000 peças,1,14.99,19/06/2023
+20,kit de pintura a óleo,2,9.99,20/06/2023
+21,lápis grafite HB,20,0.25,21/06/2023
+22,lápis 6B,5,0.50,22/06/2023
+23,lápis 4H,3,0.50,23/06/2023
+24,caneta hidrográfica,10,0.75,24/06/2023
+25,folha de papel A4,500,4.99,25/06/2023
+26,álbum de fotografia,1,12.99,26/06/2023
+27,pasta catalogadora,3,3.49,27/06/2023
+28,etiquetas adesivas,100,1.99,28/06/2023
+29,organizador de escritório,2,7.99,29/06/2023
+30,cubo de notas adesivas,4,2.49,30/06/2023
+31,caneta esferográfica vermelha,8,0.99,01/07/2023
+32,corretivo líquido,5,1.29,02/07/2023
+33,agenda telefônica,2,2.99,03/07/2023
+34,estilete,5,1.49,04/07/2023
+35,folha de fichário,100,3.99,05/07/2023
+36,caderno de desenho,3,6.99,06/07/2023
+37,estojo escolar,4,4.50,07/07/2023
+38,caixa de lápis de cor,1,9.99,08/07/2023
+39,quadro branco,1,14.99,09/07/2023
+40,marcador para quadro branco,4,0.99,10/07/2023
+41,agenda de anotações,6,4.29,11/07/2023
+42,tesoura de precisão,2,2.99,12/07/2023
+43,apontador elétrico,1,7.99,13/07/2023
+44,almofada de carimbo,3,3.99,14/07/2023
+45,carimbo de assinatura,1,5.99,15/07/2023
+46,clips colorido,50,0.15,16/07/2023
+47,dispensador de fita adesiva,2,3.49,17/07/2023
+48,calculadora científica,2,9.99,18/07/2023
+49,conjunto de réguas,3,2.99,19/07/2023
+50,protetor de documento,20,0.50,20/07/2023
+51,divisória para fichário,5,1.49,21/07/2023
+52,crachá plástico,10,0.79,22/07/2023
+53,etiqueta para crachá,50,0.10,23/07/2023
+54,apagador de quadro branco,3,2.49,24/07/2023
+55,apagador de quadro negro,2,3.99,25/07/2023
+56,estojo para canetas,5,2.99,26/07/2023
+57,tesoura de picotar,1,1.99,27/07/2023
+58,organizador de cabos,4,1.99,28/07/2023
+59,seladora de plástico,1,9.99,29/07/2023
+60,grampeador grande,2,4.99,30/07/2023
+61,almofada para carimbo,3,2.99,31/07/2023
+62,álbum de recortes,2,7.99,01/08/2023
+63,pasta de arquivo,4,3.99,02/08/2023
+64,tesoura para canhotos,1,3.49,03/08/2023

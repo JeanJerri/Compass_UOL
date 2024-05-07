@@ -1,0 +1,21 @@
+Relat√≥rio gerado em: 2024/05/06 21:31
+ 
+Data do primeiro registro de venda: 01/06/2023
+ 
+Data do √∫ltimo registro de venda: 30/06/2023
+ 
+Quantidade total de itens diferentes vendidos: 31
+ 
+Primeiras 10 linhas do arquivo backup-dados-2024050621:31.csv:
+id,produto,quantidade,pre√ßo,data
+1,caneta esferogr·fica azul,10,0.99,01/06/2023
+2,caneta esferogr·fica preta,15,0.99,02/06/2023
+3,marca-texto amarelo,5,1.49,03/06/2023
+4,marca-texto verde,3,1.49,04/06/2023
+5,estojo de l·pis de cor,2,4.99,05/06/2023
+6,borracha branca,20,0.50,06/06/2023
+7,apontador de l·pis,8,1.00,07/06/2023
+8,caderno universit·rio 100 folhas,5,3.99,08/06/2023
+9,agenda semanal,3,5.99,09/06/2023
+ 
+ 
