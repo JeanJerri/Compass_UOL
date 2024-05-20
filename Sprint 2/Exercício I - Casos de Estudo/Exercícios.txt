@@ -1,0 +1,175 @@
+--E01  
+SELECT *  
+FROM livro  
+WHERE publicacao > '2014-12-31'  
+ORDER BY cod
+
+--E02  
+SELECT titulo, valor  
+FROM livro  
+ORDER BY valor DESC  
+LIMIT 10
+
+--E03  
+SELECT COUNT(livro.editora) AS quantidade, editora.nome, endereco.estado, endereco.cidade  
+FROM livro LEFT JOIN editora ON livro.editora = editora.codeditora  
+LEFT JOIN endereco ON editora.endereco = endereco.codendereco  
+GROUP BY editora  
+ORDER BY quantidade DESC  
+LIMIT 5
+
+--E04  
+SELECT autor.nome, autor.codautor, autor.nascimento, COUNT(livro.autor) AS quantidade  
+FROM autor LEFT JOIN livro ON autor.codautor = livro.autor  
+GROUP BY autor.nome, autor.codautor, autor.nascimento  
+ORDER BY nome
+
+--E05 
+SELECT autor.nome  
+FROM autor LEFT JOIN livro ON autor.codautor = livro.autor  
+LEFT JOIN editora ON livro.editora = editora.codeditora  
+LEFT JOIN endereco ON editora.endereco = endereco.codendereco  
+WHERE estado NOT IN('SANTA CATARINA', 'RIO GRANDE DO SUL', 'PARANÁ')  
+GROUP BY autor.nome  
+ORDER BY autor.nome
+
+--E06  
+SELECT codautor, nome, COUNT(nome) AS quantidade_publicacoes  
+FROM autor LEFT JOIN livro ON autor.codautor = livro.autor  
+GROUP BY nome  
+ORDER BY quantidade_publicacoes DESC  
+LIMIT 1
+
+--E07  
+SELECT nome  
+FROM autor LEFT JOIN livro ON autor.codautor = livro.autor  
+WHERE titulo is NULL  
+ORDER BY nome
+
+--E08  
+WITH contagem AS (  
+SELECT tbvendedor.cdvdd, tbvendedor.nmvdd, count(qtd) AS contagem  
+FROM tbvendedor LEFT JOIN tbvendas ON tbvendedor.cdvdd = tbvendas.cdvdd  
+WHERE status = 'Concluído'  
+GROUP BY nmvdd  
+ORDER by contagem desc  
+)
+
+SELECT cdvdd, nmvdd  
+FROM contagem  
+LIMIT 1
+
+--E09  
+WITH vendas AS (  
+SELECT cdpro, nmpro, SUM(qtd) AS total  
+FROM tbvendas  
+WHERE (dtven BETWEEN '2014-02-03' AND '2018-02-02') AND status = 'Concluído'  
+GROUP BY cdpro  
+ORDER BY total DESC  
+)
+
+SELECT cdpro, nmpro  
+FROM vendas  
+LIMIT 1
+
+--E10   
+WITH  
+qtd_total_por_vrunt AS (  
+SELECT  
+tbvendedor.nmvdd,  
+tbvendedor.perccomissao,  
+tbvendas.vrunt,  
+SUM(tbvendas.qtd) AS qtd_total  
+FROM tbvendedor  
+LEFT JOIN tbvendas ON tbvendedor.cdvdd = tbvendas.cdvdd  
+WHERE  
+status = 'Concluído'  
+GROUP BY 1, 2, 3  
+)
+
+comissao_por_vrunt AS (  
+SELECT  
+nmvdd AS vendedor,  
+ROUND((vrunt * qtd_total), 2) AS valor_total_vendas,  
+ROUND((CAST(perccomissao as float)/100) * (vrunt * qtd_total), 2) AS comissao  
+FROM qtd_total_por_vrunt  
+ORDER BY comissao DESC  
+)
+
+SELECT vendedor, SUM(valor_total_vendas) AS valor_total_vendas, SUM(comissao) AS comissao  
+FROM comissao_por_vrunt  
+GROUP BY vendedor  
+ORDER BY comissao DESC
+
+--E11  
+SELECT cdcli, nmcli, ROUND((SUM(qtd)*vrunt), 2) AS gasto  
+FROM tbvendas  
+WHERE status = 'Concluído'  
+GROUP by cdcli, cdpro  
+ORDER by gasto DESC  
+LIMIT 1
+
+--E12  
+WITH menor_valor_total_bruto AS (  
+SELECT  
+tbvendedor.cdvdd,  
+tbvendedor.nmvdd,  
+tbvendas.vrunt,  
+SUM(tbvendas.qtd) AS qtd_total,  
+ROUND((vrunt * SUM(tbvendas.qtd)), 2) AS valor_total_vendas  
+FROM tbvendedor  
+LEFT JOIN tbvendas ON tbvendedor.cdvdd = tbvendas.cdvdd  
+WHERE status = 'Concluído'  
+GROUP BY tbvendedor.cdvdd  
+ORDER BY valor_total_vendas  
+LIMIT 1  
+)
+
+SELECT  
+tbdependente.cddep,  
+tbdependente.nmdep,  
+tbdependente.dtnasc,  
+menor_valor_total_bruto.valor_total_vendas  
+FROM menor_valor_total_bruto  
+JOIN tbdependente ON menor_valor_total_bruto.cdvdd = tbdependente.cdvdd
+
+--E13  
+SELECT cdpro, nmcanalvendas, nmpro, SUM(qtd) AS quantidade_vendas  
+FROM tbvendas  
+WHERE status = 'Concluído'  
+GROUP BY cdpro, nmcanalvendas  
+ORDER BY quantidade_vendas  
+LIMIT 10
+
+--E14  
+WITH qtd_total as (  
+SELECT estado, vrunt, SUM(qtd) as quantidade_vendas  
+FROM tbvendas  
+WHERE status = 'Concluído'  
+GROUP by estado  
+ORDER by quantidade_vendas  
+)
+
+SELECT estado, ROUND(AVG(quantidade_vendas*vrunt), 2) as gastomedio  
+from qtd_total  
+GROUP by estado  
+ORDER by gastomedio DESC
+
+--E15  
+SELECT cdven  
+FROM tbvendas  
+WHERE deletado = '1'  
+ORDER BY cdven
+
+--E16  
+WITH porestado AS (  
+SELECT cdven, estado, nmpro, COUNT(estado) AS vendas_estado, SUM(qtd) AS qtd_produtos  
+FROM tbvendas  
+WHERE status = 'Concluído'  
+GROUP BY estado, nmpro  
+ORDER BY estado, nmpro  
+)
+
+SELECT estado, nmpro, ROUND((qtd_produtos/vendas_estado), 4) AS quantidade_media  
+FROM porestado  
+ORDER BY estado, nmpro
