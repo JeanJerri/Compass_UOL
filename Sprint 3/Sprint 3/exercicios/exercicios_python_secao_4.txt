@@ -1,0 +1,456 @@
+Exercícios Parte 2
+
+
+Exercício de programação 6:
+Considere as duas listas abaixo:
+a = [1, 1, 2, 3, 5, 8, 14, 21, 34, 55, 89]
+b = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+Escreva um programa para avaliar o que ambas as listas têm em comum (sem repetições), imprimindo a lista de valores da interseção na saída padrão.
+Importante:  Esperamos que você utilize o construtor set() em seu código
+
+a = [1, 1, 2, 3, 5, 8, 14, 21, 34, 55, 89]
+b = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+
+a = set(a)
+b = set(b)
+lista = a.intersection(b)
+lista = list(lista)
+print(lista)
+
+
+
+Exercício de programação 7:
+Dada a seguinte lista:
+a = [1, 4, 9, 16, 25, 36, 49, 64, 81, 100]
+Faça um programa que gere uma nova lista contendo apenas números ímpares.
+
+a = [1, 4, 9, 16, 25, 36, 49, 64, 81, 100]
+lista = []
+
+for i in a:
+    if i % 2 != 0:
+        lista.append(i)
+
+print(lista)
+
+
+
+Exercício de programação 8:
+Verifique se cada uma das palavras da lista ['maça', 'arara', 'audio', 'radio', 'radar', 'moto'] é ou não um palíndromo.
+Obs: Palíndromo é uma palavra que permanece igual se lida de traz pra frente.
+É necessário que você imprima no console exatamente assim:
+A palavra: maça não é um palíndromo
+A palavra: arara é um palíndromo
+A palavra: audio não é um palíndromo
+A palavra: radio não é um palíndromo
+A palavra: radar é um palíndromo
+A palavra: moto não é um palíndromo
+
+lista = ['maça', 'arara', 'audio', 'radio', 'radar', 'moto']
+
+for i in lista:
+    if i[::-1]==i:
+        print("A palavra: " + i + " é um palíndromo")
+    else:
+        print("A palavra: " + i + " não é um palíndromo")
+
+
+
+Exercício de programação 9:
+Dada as listas a seguir:
+primeirosNomes = ['Joao', 'Douglas', 'Lucas', 'José']
+sobreNomes = ['Soares', 'Souza', 'Silveira', 'Pedreira']
+idades = [19, 28, 25, 31]
+Faça um programa que imprima o dados na seguinte estrutura: "índice - primeiroNome sobreNome está com idade anos".
+Exemplo:
+0 - João Soares está com 19 anos
+
+primeirosNomes = ['Joao', 'Douglas', 'Lucas', 'José']
+sobreNomes = ['Soares', 'Souza', 'Silveira', 'Pedreira']
+idades = [19, 28, 25, 31]
+lista = []
+
+for indice, primeirosNome in enumerate(primeirosNomes):
+    lista.append(str(indice) + " - " + primeirosNome + " " + sobreNomes[indice] + " está com " + str(idades[indice]) + " anos")
+    
+for i in range(4):
+    print(lista[i])
+
+
+
+Exercício de programação 10:
+Escreva uma função que recebe uma lista e retorna uma nova lista sem elementos duplicados. Utilize a lista a seguir para testar sua função.
+['abc', 'abc', 'abc', '123', 'abc', '123', '123']
+
+lista = ['abc', 'abc', 'abc', '123', 'abc', '123', '123']
+lista = list(set(lista))
+print(lista)
+
+
+
+Exercício de programação 11:
+Leia o arquivo person.json, faça o parsing e imprima seu conteúdo.
+Dica: leia a documentação do pacote json
+
+import json
+
+with open('person.json', 'r') as arquivo:
+    leitura = json.load(arquivo)
+
+print(leitura)
+
+
+
+Exercício de programação 12:
+Implemente a função my_map(list, f) que recebe uma lista como primeiro argumento e uma função como segundo argumento. Esta função aplica a função recebida para cada elemento da lista recebida e retorna o resultado em uma nova lista.
+Teste sua função com a lista de entrada [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] e com uma função que potência de 2 para cada elemento.
+
+lista1 = []
+lista = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+def my_map(lista0, f):
+    for i in lista0:
+        lista1.append(f(i))
+    return lista1
+            
+def potencia(i):
+    return i ** 2
+
+lista2 = my_map(lista, potencia)
+    
+print(lista2)
+
+
+
+Exercício de programação 13:
+Escreva um programa que lê o conteúdo do arquivo texto arquivo_texto.txt e imprime o seu conteúdo.
+Dica: leia a documentação da função open(...)
+
+import json
+
+with open('arquivo_texto.txt', 'r') as arquivo:
+    for linha in arquivo:
+        print(linha, end='')
+
+
+
+Exercício de programação 14:
+Escreva uma função que recebe um número variável de parâmetros não nomeados e um número variado de parâmetros nomeados e imprime o valor de cada parâmetro recebido.
+Teste sua função com os seguintes parâmetros:
+(1, 3, 4, 'hello', parametro_nomeado='alguma coisa', x=20)
+
+def imprimir_parametros(*args, **kwargs):
+    for i, arg in enumerate(args):
+        print(arg)
+        
+    for key, value in kwargs.items():
+        print(value)
+
+imprimir_parametros(1, 3, 4, 'hello', parametro_nomeado='alguma coisa', x=20)
+
+
+
+Exercício de programação 15:
+Implemente a classe Lampada. A classe Lâmpada recebe um booleano no seu construtor, Truese a lâmpada estiver ligada, False caso esteja desligada. A classe Lampada possuí os seguintes métodos:
+liga(): muda o estado da lâmpada para ligada
+desliga(): muda o estado da lâmpada para desligada
+esta_ligada(): retorna verdadeiro se a lâmpada estiver ligada, falso caso contrário
+Para testar sua classe:
+Ligue a Lampada
+Imprima: A lâmpada está ligada? True
+Desligue a Lampada
+Imprima: A lâmpada ainda está ligada? False
+
+class Lampada:
+    
+    def __init__(self, ligada = False):
+        self.ligada = ligada
+    
+    def liga(self):
+        self.acesa = True
+    
+    def desliga(self):
+        self.acesa = False
+        
+    def esta_ligada(self):
+        return self.acesa
+
+        
+l1 = Lampada()
+l1.liga()
+print("A lâmpada está ligada?", l1.esta_ligada())
+l1.desliga()
+print("A lâmpada está ligada?", l1.esta_ligada())
+
+
+
+Exercício de programação 16:
+Escreva uma função que recebe uma string de números separados por vírgula e retorne a soma de todos eles. Depois imprima a soma dos valores.
+A string deve ter valor  "1,3,4,6,10,76"
+
+def soma_numeros(string_numeros):
+    lista_numeros = string_numeros.split(',')
+    soma = sum(int(numero) for numero in lista_numeros)
+    return soma
+
+string_numeros = "1,3,4,6,10,76"
+
+soma = soma_numeros(string_numeros)
+
+print(soma)
+
+
+
+Exercício de programação 17:
+Escreva uma função que recebe como parâmetro uma lista e retorna 3 listas: a lista recebida dividida em 3 partes iguais. Teste sua implementação com a lista abaixo
+lista = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+
+def dividir_lista(lista):
+    tamanho_parte = len(lista) // 3
+    
+    parte1 = lista[:tamanho_parte]
+    parte2 = lista[tamanho_parte:2*tamanho_parte]
+    parte3 = lista[2*tamanho_parte:]
+    
+    if len(lista) % 3 == 1:
+        parte3.append(lista[-1])
+    elif len(lista) % 3 == 2:
+        parte2.append(lista[-2])
+        parte3.append(lista[-1])
+    
+    return parte1, parte2, parte3
+
+lista = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+
+parte1, parte2, parte3 = dividir_lista(lista)
+
+print(parte1, parte2, parte3)
+
+
+
+Exercício de programação 18:
+Dado o dicionário a seguir:
+speed = {'jan':47, 'feb':52, 'march':47, 'April':44, 'May':52, 'June':53, 'july':54, 'Aug':44, 'Sept':54}
+Crie uma lista com todos os valores (não as chaves!) e coloque numa lista de forma que não haja valores duplicados.
+
+speed = {'jan':47, 'feb':52, 'march':47, 'April':44, 'May':52, 'June':53, 'july':54, 'Aug':44, 'Sept':54} 
+lista = list(set(speed.values()))
+print(lista)
+
+
+
+Exercício de programação 19:
+Calcule o valor mínimo, valor máximo, valor médio e a mediana da lista gerada na célula abaixo:
+Obs.: Lembrem-se, para calcular a mediana a lista deve estar ordenada!
+import random 
+# amostra aleatoriamente 50 números do intervalo 0...500
+random_list = random.sample(range(500),50)
+Use as variáveis abaixo para representar cada operação matemática:
+mediana
+media
+valor_minimo 
+valor_maximo 
+Importante: Esperamos que você utilize as funções abaixo em seu código:
+random
+max
+min
+sum
+
+import random
+
+random_list = random.sample(range(500), 50)
+tamanho_list = len(random_list)
+lista_ordenada = sorted(random_list)
+
+valor_minimo = min(lista_ordenada)
+valor_maximo = max(lista_ordenada)
+media = sum(lista_ordenada)/tamanho_list
+
+if tamanho_list%2==0:
+    corte = (tamanho_list//2)-1
+    mediana = sum(lista_ordenada[corte:-corte])/2
+    
+else:
+    print("aqui")
+    corte = (tamanho_list//2)
+    mediana = lista_ordenada[corte:-corte]
+
+print("Media:", str(media) + ", Mediana:", (str)(mediana) + ", Mínimo:", (str)(valor_minimo) + ", Máximo:", (str)(valor_maximo))
+
+
+
+Exercício de programação 20:
+Imprima a lista abaixo de trás para frente.
+a = [1, 0, 2, 3, 5, 8, 13, 21, 34, 55, 89]
+
+a = [1, 0, 2, 3, 5, 8, 13, 21, 34, 55, 89]
+a = a[::-1]
+print(a)
+
+
+
+Exercício de programação 21:
+Implemente duas classes, Pato e Pardal , que herdam de uma superclasse chamada Passaro as habilidades de voar e emitir som.
+Contudo, tanto Pato quanto Pardal devem emitir sons diferentes (de maneira escrita) no console, conforme o modelo a seguir.
+Imprima no console exatamente assim:
+Pato
+Voando...
+Pato emitindo som...
+Quack Quack
+Pardal
+Voando...
+Pardal emitindo som...
+Piu Piu
+
+class Passaro:
+    def __init__(self):
+        pass 
+    
+    def voar(self):
+        print('Voando...')
+        
+    def emitirSom(self):
+        print('Quack Quack')
+        
+class Pato(Passaro):
+    def emitirSom(self):
+        print('Pato emitindo som...')
+        print('Quack Quack')
+        
+    def acao(self):
+        print('Pato')
+        self.voar()
+        self.emitirSom()
+        
+class Pardal(Passaro):
+    def emitirSom(self):
+        print('Pardal emitindo som...')
+        print('Piu Piu')
+        
+    def acao(self):
+        print('Pardal')
+        self.voar()
+        self.emitirSom()
+        
+pato1 = Pato()
+pato1.acao
+
+pardal1 = Pardal()
+pardal1.acao
+
+
+
+Exercício de programação 22:
+Crie uma classe chamada Pessoa, com um atributo privado chamado nome (declarado internamente na classe como __nome) e um atributo público de nome id.
+Adicione dois métodos à classe, sendo um para definir o valor de __nome e outro para retornar o valor do respectivo atributo.
+Lembre-se que o acesso ao atributo privado deve ocorrer somente através dos métodos definidos, nunca diretamente.  Você pode alcançar este comportamento através do recurso de properties do Python.
+Veja um exemplo de como seu atributo privado pode ser lido e escrito:
+pessoa = Pessoa(0) 
+pessoa.nome = 'Fulano De Tal'
+print(pessoa.nome)
+
+class Pessoa:
+    def __init__(self, id):
+        self.id = id
+        self.__nome = None
+    
+    @property
+    def nome(self):
+        return self.__nome
+        
+    @nome.setter
+    def nome(self, nome):
+        self.__nome = nome
+        
+pessoa = Pessoa(0)
+pessoa.nome = 'Fulano de Tal'
+print(pessoa.nome)
+
+
+
+Exercício de programação 23:
+Crie uma classe  Calculo  que contenha um método que aceita dois parâmetros, X e Y, e retorne a soma dos dois. Nessa mesma classe, implemente um método de subtração, que aceita dois parâmetros, X e Y, e retorne a subtração dos dois (resultados negativos são permitidos).
+Utilize os valores abaixo para testar seu exercício:
+x = 4 
+y = 5
+imprima:
+Somando: 4+5 = 9
+Subtraindo: 4-5 = -1
+
+class Calculo:
+    def __init__(self):
+        pass
+    
+    def soma(self, x, y):
+        self.x = x
+        self.y = y
+        return x + y
+        
+    def subtracao(self, x, y):
+        self.x = x
+        self.y = y
+        return x - y
+        
+x = 4 
+y = 5
+
+a = Calculo()
+print(f"Somando: {x} + {y} = {a.soma(x, y)}\nSubtraindo: {x} - {y} = {a.subtracao(x, y)}")
+
+
+
+Exercício de programação 24:
+Crie uma classe Ordenadora que contenha um atributo listaBaguncada e que contenha os métodos ordenacaoCrescente e ordenacaoDecrescente.
+Instancie um objeto chamado crescente dessa classe Ordenadora que tenha como listaBaguncada a lista [3,4,2,1,5] e instancie um outro objeto, decrescente dessa mesma classe com uma outra listaBaguncada sendo [9,7,6,8].
+Para o primeiro objeto citado, use o método ordenacaoCrescente e para o segundo objeto, use o método ordenacaoDecrescente.
+Imprima o resultado da ordenação crescente e da ordenação decresce
+[1, 2, 3, 4, 5] 
+[9, 8, 7, 6]
+
+class Ordenadora:
+    def __init__(self, listaBaguncada):
+        self.listaBaguncada = listaBaguncada
+
+    def ordenacaoCrescente(self):
+        return sorted(self.listaBaguncada)
+
+    def ordenacaoDecrescente(self):
+        return sorted(self.listaBaguncada, reverse=True)
+
+crescente = Ordenadora([3, 4, 2, 1, 5])
+decrescente = Ordenadora([9, 7, 6, 8])
+
+print(crescente.ordenacaoCrescente())
+print(decrescente.ordenacaoCrescente())
+
+
+
+Exercício de programação 25:
+Crie uma classe Avião que possua os atributos modelo, velocidade_maxima, cor e capacidade.
+Defina o atributo cor de sua classe , de maneira que todas as instâncias de sua classe avião sejam da cor “azul”.
+Após isso, a partir de entradas abaixo, instancie e armazene em uma lista 3 objetos da classe Avião.
+Ao final, itere pela lista imprimindo cada um dos objetos no seguinte formato:
+“O avião de modelo “x” possui uma velocidade máxima de “y”, capacidade para “z” passageiros e é da cor “w”.
+Sendo x, y, z e w cada um dos atributos da classe “Avião”.
+Valores de entrada:
+modelo BOIENG456: velocidade máxima 1500 km/h: capacidade para 400 passageiros: Cor Azul
+modelo Embraer Praetor 600: velocidade máxima 863km/h: capacidade para 14 passageiros: Cor Azul
+modelo Antonov An-2: velocidade máxima de 258 Km/h: capacidade para 12 passageiros: Cor Azul
+
+class Aviao:
+    def __init__(self, modelo, velocidade_maxima, capacidade):
+        self.modelo = modelo
+        self.velocidade_maxima = velocidade_maxima
+        self.capacidade = capacidade
+        self.cor = 'Azul'
+
+avioes_info = [
+    {"modelo": "BOIENG456", "velocidade_maxima": "1500 km/h", "capacidade": 400},
+    {"modelo": "Embraer Praetor 600", "velocidade_maxima": "863 km/h", "capacidade": 14},
+    {"modelo": "Antonov An-2", "velocidade_maxima": "258 km/h", "capacidade": 12}
+]
+
+lista_avioes = [Aviao(info["modelo"], info["velocidade_maxima"], info["capacidade"]) for info in avioes_info]
+
+for aviao in lista_avioes:
+    print(f'O avião de modelo “{aviao.modelo}” possui uma velocidade máxima de “{aviao.velocidade_maxima}”, capacidade para “{aviao.capacidade}” passageiros e é da cor “{aviao.cor}”.')
