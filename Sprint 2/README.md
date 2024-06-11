@@ -8,9 +8,9 @@
 
 ## Exportação de Dados
 
-1. [Resposta Etapa 1.](../Sprint%202/exercicios/Exercício%20II%20-%20Exportação%20de%20dados/resultado_etapa1.csv)
+1. [Resultado Etapa 1.](../Sprint%202/exercicios/Exercício%20II%20-%20Exportação%20de%20dados/resultado_etapa1.csv)
 
-2. [Resposta Etapa 2.](../Sprint%202/exercicios/Exercício%20II%20-%20Exportação%20de%20dados/resultado_etapa2.csv)
+2. [Resultado Etapa 2.](../Sprint%202/exercicios/Exercício%20II%20-%20Exportação%20de%20dados/resultado_etapa2.csv)
 
 
 # Desafio
