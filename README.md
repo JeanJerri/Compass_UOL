@@ -83,8 +83,20 @@ Olá, sou Jean Jerri Rocha Bento da Silva, moro na cidade de Barra do Choça - B
 ## 5. [Sprint 5](./Sprint%205/README.md)
 
 
-###
+### Curso Parceiro AWS: AWS Cloud Quest: Cloud Practitioner
+- Aprendi como funciona váriios serviços da AWS e como usa-los na prática.
+- Os mais explorados no jogo e que mais aprendi foram o EC2, em que sempre era utilizado as instâncias na maioria dos serviços.
 
-###
+### Curso-padrão de preparação para o exame: AWS Certified Cloud Practitioner (CLF-C02)
+- Aprendi algumas informações importantes sobre o exame.
+- O estilo em que as questões são trabalhadas.
+- Os tópicos e algumas sugestões de treinamento que o curso forneceu.
+- E reforçou alguns conceitos ja vistos em outros cursos como o de nuvem e serviços.
+
+### Desafio da Sprint
+- Aprendi como fazer consultas utilizando o S3 Select.
+- Como criar buckets e armazenar arquivos
+- Aprendi como funciona o boto3.
+- E melhorei algumas práticas com SQL.
 
 ___
