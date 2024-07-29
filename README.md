@@ -99,4 +99,7 @@ Olá, sou Jean Jerri Rocha Bento da Silva, moro na cidade de Barra do Choça - B
 - Aprendi como funciona o boto3.
 - E melhorei algumas práticas com SQL.
 
+
+## 6. [Sprint 6](./Sprint%206/README.md)
+
 ___
