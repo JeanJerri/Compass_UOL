@@ -14,30 +14,29 @@ O desafio consiste na construção de um Data Lake para filmes e séries que est
 
 # Entrega 2 (Atualização)
 
-## Função Lambda
-
 - No [código python](../Desafio/etapa-1/lambda_function.py) adicionei algumas funções para fazer a consulta dos ids do tmdb das séries e filmes buscadas pelas funções criadas na sprint anterior e também uma função para consultar os nomes do gêneros correspondentes aos ids retornado na coluna e armazenar os resultados no bucket S3. Dessa forma, permitindo fazer a complementação dos dados locais que estão na camada Raw em formato csv. As demais funções mantive como estava, fiz apenas algumas adaptações necessárias para o código funcionar corretamente.
+
     ![Código executado](../Desafio/etapa-1/evidencias/Screenshot_623.png)
-    ![Resultado da execução](../Desafio/etapa-1/evidencias/Screenshot_624.png)
-    ![Resultado da execução](../Desafio/etapa-1/evidencias/Screenshot_625.png)
-    ![Resultado da execução](../Desafio/etapa-1/evidencias/Screenshot_626.png)
-    ![Resultado da execução](../Desafio/etapa-1/evidencias/Screenshot_627.png)
+    - [Resultado da execução(1)](../Desafio/etapa-1/evidencias/Screenshot_624.png)
+    - [Resultado da execução(2)](../Desafio/etapa-1/evidencias/Screenshot_625.png)
+    - [Resultado da execução(3)](../Desafio/etapa-1/evidencias/Screenshot_626.png)
+    - [Resultado da execução(4)](../Desafio/etapa-1/evidencias/Screenshot_627.png)
 
 
 # Entrega 3
 
-## Função Lambda
-
 1. Como no Lab AWS Glue da sprint passada foi feito a configuração para utilizar o AWS Glue e foi criado a IAM Role para os jobs do AWS Glue, não precisei fazer essa parte novamente.
-    ![Configuração para utilizar o AWS Glue](../Desafio/etapa-1/evidencias/Screenshot_622.png)
-    ![IAM Role para os jobs do AWS Glue](../Desafio/etapa-1/evidencias/Screenshot_628.png)
+    - ![Configuração para utilizar o AWS Glue](../Desafio/etapa-1/evidencias/Screenshot_622.png)
+    - ![IAM Role para os jobs do AWS Glue](../Desafio/etapa-1/evidencias/Screenshot_628.png)
 
 2. Criei o banco de dados para adicionar as tabelas através dos dados que serão processados na camada trusted posteriormente e nomeei como ```meu-data-lake-sci-fi-fantasia-glue-data-catalog``` e adicionei meu usuário IAM como administrador do data lake. Também concedi privilégios para a role do IAM criada anteriormente (AWSGlueServiceRole-Lab4) e dei as permissões de Create table, Alter, Drop e Describe.
-    ![Data lake administrators](../Desafio/etapa-1/evidencias/Screenshot_631.png)
-    ![Data lake permissions](../Desafio/etapa-1/evidencias/Screenshot_630.png)
+    - ![Data lake administrators](../Desafio/etapa-1/evidencias/Screenshot_631.png)
+    - ![Data lake permissions](../Desafio/etapa-1/evidencias/Screenshot_630.png)
 
 3. Criei 2 jobs com as seguintes configurações:
+
     ![Jobs](../Desafio/etapa-1/evidencias/Screenshot_633.png)
+    
     ![Configuração dos jobs](../Desafio/etapa-1/evidencias/Screenshot_632.png)
 
 4. Processamento dos arquivos CSV:
@@ -57,6 +56,9 @@ O desafio consiste na construção de um Data Lake para filmes e séries que est
     - No fim, salvei os arquivos transformados no formato parquet na camada trusted no bucket do desafio, particionados por ano de lançamento e primeira exibição.
 
 6. Por último fiz a criação de um crawler e vinculei as pastas onde foram armazenados o resultado dos processamentos na camada trusted para após ser executado, criar as tabelas e disponibilizar no AWS Athena.
+
     ![Crawler](../Desafio/etapa-1/evidencias/Screenshot_634.png)
+
     ![Tabelas no AWS Glue](../Desafio/etapa-1/evidencias/Screenshot_635.png)
+
     ![Tabelas no AWS Athena](../Desafio/etapa-1/evidencias/Screenshot_636.png)
