@@ -1,0 +1,45 @@
+CREATE VIEW view_idiomas_populares AS
+WITH series_populares AS (
+SELECT DISTINCT
+    fato.id_serie,
+    serie.titulo_principal,
+    date_diff('year', fato.data_primeira_exibicao, fato.data_ultima_exibicao) AS duracao_anos,
+    duracao.numero_temporadas,
+    CAST(duracao.numero_episodios AS smallint) / CAST(duracao.numero_temporadas AS smallint) AS media_episodios_por_temporada,
+    serie.pais_original,
+    serie.idioma_original,
+    idiomas.idioma,
+    gen.genero,
+    fato.popularidade,
+    fato.nota_media,
+    fato.data_primeira_exibicao,
+    fato.data_ultima_exibicao,
+    serie.status
+FROM 
+    fato_formato_series fato
+JOIN 
+    dim_generos_series gen ON CAST(fato.id_genero AS bigint) = gen.id_genero
+JOIN 
+    dim_series serie ON fato.id_serie = serie.id_serie
+JOIN 
+    dim_duracao duracao ON fato.id_duracao = duracao.id_duracao
+JOIN 
+    dim_idiomas idiomas ON fato.id_idioma = idiomas.id_idioma
+WHERE 
+    gen.genero = 'Sci-Fi & Fantasy'
+    AND fato.nota_media >= 7
+    AND fato.numero_votos >= 10
+    AND fato.ano_lancamento >= 1984
+ORDER BY 
+    fato.popularidade DESC
+LIMIT 500
+)
+SELECT
+    idioma,
+    COUNT(idioma) AS quantidade
+FROM 
+    series_populares
+GROUP BY 
+    idioma
+ORDER BY 
+    quantidade DESC;

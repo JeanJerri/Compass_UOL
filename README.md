@@ -118,4 +118,19 @@ Olá, sou Jean Jerri Rocha Bento da Silva, moro na cidade de Barra do Choça - B
 
 ## 8. [Sprint 8](./Sprint%208/README.md)
 
+
+###
+
+###
+
+
+## 9. [Sprint 9](./Sprint%209/README.md)
+
+### Desafio da Sprint
+- Aprendi na prática a diferença de processamento de dados com o uso do PySpark.
+- Pratiquei os conhecimentos sobre modelagem de dados e SQL visto nas sprints anterioes.
+- Aprimorei minha análise visando a apresentação consistente das respostas e na análise dos dados.
+- Aprimorei os conhecimentos adquiridos na sprint anterior já que o processo foi bem parecido.
+
+
 ___

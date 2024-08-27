@@ -1,0 +1,55 @@
+CREATE VIEW view_top_generos AS
+WITH filmes_seculo_atual AS (
+    SELECT DISTINCT
+        f.id_filme,
+        f.id_genero,
+        g.genero,
+        f.data_lancamento,
+        f.lucro
+    FROM 
+        fato_lucro_filmes f
+    JOIN 
+        dim_generos_filmes g ON CAST(f.id_genero AS bigint) = g.id_genero
+    WHERE 
+        f.data_lancamento >= DATE('2001-01-01')
+), 
+filmes_fantasia AS (
+    SELECT 
+        *
+    FROM 
+        filmes_seculo_atual
+    WHERE 
+        genero = 'Fantasy'
+),
+top_100_filmes AS (
+    SELECT
+        *
+    FROM
+        filmes_fantasia
+    ORDER BY 
+        lucro DESC
+    LIMIT 100
+),
+outros_generos AS (
+    SELECT DISTINCT
+        fsa.id_filme,
+        fsa.id_genero,
+        fsa.genero,
+        fsa.data_lancamento,
+        fsa.lucro
+    FROM 
+        filmes_seculo_atual fsa
+    JOIN 
+        top_100_filmes top
+    ON 
+        fsa.id_filme = top.id_filme
+)
+SELECT 
+    genero,
+    COUNT(genero) AS quantidade
+FROM 
+    outros_generos
+GROUP BY
+    genero
+ORDER BY 
+    quantidade DESC;

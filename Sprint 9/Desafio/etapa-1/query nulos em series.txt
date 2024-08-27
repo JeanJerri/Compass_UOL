@@ -1,0 +1,59 @@
+--Join entre as tabelas
+WITH join_series AS (
+    SELECT 
+        COALESCE(t2.imdb_id, t1.id) AS id_imdb,
+        CAST(t2.serie_id AS INT) AS id_serie,
+        COALESCE(t2.tituloprincipal, t1.tituloprincipal) AS titulo_principal,
+        COALESCE(t2.titulooriginal, t1.titulooriginal) AS titulo_original,
+        t2.paisoriginal AS pais_original,
+        COALESCE(NULLIF(TRIM(t2.idiomas), ''), t2.idiomaoriginal) AS idiomas,
+        t2.idiomaoriginal AS idioma_original,
+        CAST(t2.dataprimeiraexibicao AS DATE) AS data_primeira_exibicao,
+        CAST(t2.dataultimaexibicao AS DATE) AS data_ultima_exibicao,
+        COALESCE(CAST(t2.anoprimeiraexibicao AS SMALLINT), CAST(t1.anolancamento AS SMALLINT)) AS ano_lancamento,
+        COALESCE(CAST(t2.anoultimaexibicao AS SMALLINT), CAST(t1.anotermino AS SMALLINT)) AS ano_termino,
+        COALESCE(t2.genero, t1.genero) AS generos,
+        COALESCE(CAST(t2.minutosporepisodio AS VARCHAR), t1.tempominutos) AS tempo_minutos,
+        CAST(t2.numeroepisodios AS SMALLINT) AS numero_episodios,
+        CAST(t2.numerotemporadas AS SMALLINT) AS numero_temporadas,
+        CAST(t2.popularidade AS INT) AS popularidade,
+        COALESCE(CAST(t2.notamedia AS DOUBLE), CAST(t1.notamedia AS DOUBLE)) AS nota_media,
+        COALESCE(CAST(t2.numerovotos AS INT), CAST(t1.numerovotos AS INT)) AS numero_votos,
+        t2.status
+    FROM 
+        "meu-data-lake-sci-fi-fantasia-glue-data-catalog"."seriestmdb" t2 
+    FULL OUTER JOIN 
+        "meu-data-lake-sci-fi-fantasia-glue-data-catalog"."serieslocal" t1
+    ON
+        t2.imdb_id = t1.id
+    WHERE 
+        COALESCE(t2.genero, t1.genero) IS NOT NULL
+        AND COALESCE(t2.genero, t1.genero) <> ''
+        AND COALESCE(t2.genero, t1.genero) <> '\N'
+        AND popularidade IS NOT NULL
+)
+--Verificar colunas com valores nulos
+SELECT
+    COUNT(*) AS total_records,
+    SUM(CASE WHEN id_imdb IS NULL OR id_imdb = '' OR id_imdb = '\N' THEN 1 ELSE 0 END) AS id_imdb_nulos,
+    SUM(CASE WHEN id_serie IS NULL THEN 1 ELSE 0 END) AS id_serie_nulos,
+    SUM(CASE WHEN titulo_principal IS NULL OR titulo_principal = '' OR titulo_principal = '\N' THEN 1 ELSE 0 END) AS titulo_principal_nulos,
+    SUM(CASE WHEN titulo_original IS NULL OR titulo_original = '' OR titulo_original = '\N' THEN 1 ELSE 0 END) AS titulo_original_nulos,
+    SUM(CASE WHEN pais_original IS NULL OR pais_original = '' OR pais_original = '\N' THEN 1 ELSE 0 END) AS pais_original_nulos,
+    SUM(CASE WHEN idiomas IS NULL OR idiomas = '' OR idiomas = '\N' THEN 1 ELSE 0 END) AS idiomas_nulos,
+    SUM(CASE WHEN idioma_original IS NULL OR idioma_original = '' OR idioma_original = '\N' THEN 1 ELSE 0 END) AS idioma_original_nulos,
+    SUM(CASE WHEN data_primeira_exibicao IS NULL THEN 1 ELSE 0 END) AS data_primeira_exibicao_nulos,
+    SUM(CASE WHEN data_ultima_exibicao IS NULL THEN 1 ELSE 0 END) AS data_ultima_exibicao_nulos,
+    SUM(CASE WHEN ano_lancamento IS NULL THEN 1 ELSE 0 END) AS ano_lancamento_nulos,
+    SUM(CASE WHEN ano_termino IS NULL THEN 1 ELSE 0 END) AS ano_termino_nulos,
+    SUM(CASE WHEN generos IS NULL OR generos = '' OR generos = '\N' THEN 1 ELSE 0 END) AS genero_nulos,
+    SUM(CASE WHEN tempo_minutos IS NULL OR tempo_minutos = '' OR tempo_minutos = '\N' THEN 1 ELSE 0 END) AS tempo_minutos_nulos,
+    SUM(CASE WHEN numero_episodios IS NULL THEN 1 ELSE 0 END) AS numero_episodios_nulos,
+    SUM(CASE WHEN numero_temporadas IS NULL THEN 1 ELSE 0 END) AS numero_temporadas_nulos,
+    SUM(CASE WHEN popularidade IS NULL THEN 1 ELSE 0 END) AS popularidade_nulos,
+    SUM(CASE WHEN nota_media IS NULL THEN 1 ELSE 0 END) AS nota_media_nulos,
+    SUM(CASE WHEN numero_votos IS NULL THEN 1 ELSE 0 END) AS numero_votos_nulos,
+    SUM(CASE WHEN status IS NULL OR status = '' OR status = '\N' THEN 1 ELSE 0 END) AS status_nulos
+FROM 
+    join_series;
+    

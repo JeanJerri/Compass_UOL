@@ -1,0 +1,67 @@
+CREATE TABLE "meu-data-lake-sci-fi-fantasia-glue-data-catalog"."movies" AS
+WITH join_movies AS (
+    SELECT 
+        COALESCE(t2.imdb_id, t1.id) AS id_imdb,
+        CAST(t2.movie_id AS INT) AS id_movie,
+        COALESCE(t2.tituloprincipal, t1.tituloprincipal) AS titulo_principal,
+        COALESCE(t2.titulooriginal, t1.titulooriginal) AS titulo_original,
+        CAST(t2.datalancamento AS DATE) AS data_lancamento,
+        COALESCE(CAST(t2.anolancamento AS SMALLINT), CAST(t1.anolancamento AS SMALLINT)) AS ano_lancamento,
+        COALESCE(t2.genero, t1.genero) AS generos,
+        t2.orcamento, 
+        t2.receita
+    FROM 
+        "meu-data-lake-sci-fi-fantasia-glue-data-catalog"."moviestmdb" t2 
+    FULL OUTER JOIN 
+        "meu-data-lake-sci-fi-fantasia-glue-data-catalog"."movieslocal" t1
+    ON
+        t2.imdb_id = t1.id
+    WHERE 
+        t2.receita > 0
+),
+separacao_generos AS (
+    SELECT 
+        id_imdb,
+        id_movie,
+        titulo_principal,
+        titulo_original,
+        data_lancamento,
+        ano_lancamento,
+        orcamento,
+        receita,
+        TRIM(g) AS genero
+    FROM 
+        join_movies,
+        UNNEST(SPLIT(generos, ',')) AS t(g)
+),
+join_generos AS (
+    SELECT 
+        eg.*,
+        g.id AS id_genero
+    FROM 
+        separacao_generos eg
+    LEFT JOIN 
+        (SELECT 
+            id, 
+            name 
+         FROM 
+            "meu-data-lake-sci-fi-fantasia-glue-data-catalog"."generosmovies"
+        ) g
+    ON 
+        eg.genero = g.name
+)
+SELECT 
+    id_imdb,
+    id_movie,
+    titulo_principal,
+    titulo_original,
+    data_lancamento,
+    ano_lancamento,
+    id_genero,
+    genero,
+    orcamento,
+    receita
+FROM 
+    join_generos
+ORDER BY 
+    id_imdb;

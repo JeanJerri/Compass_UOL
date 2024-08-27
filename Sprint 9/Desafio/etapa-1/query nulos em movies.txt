@@ -1,0 +1,35 @@
+--Join entre as tabelas
+WITH join_movies AS (
+    SELECT 
+        COALESCE(t2.imdb_id, t1.id) AS id_imdb,
+        CAST(t2.movie_id AS INT) AS id_movie,
+        COALESCE(t2.tituloprincipal, t1.tituloprincipal) AS titulo_principal,
+        COALESCE(t2.titulooriginal, t1.titulooriginal) AS titulo_original,
+        CAST(t2.datalancamento AS DATE) AS data_lancamento,
+        COALESCE(CAST(t2.anolancamento AS SMALLINT), CAST(t1.anolancamento AS SMALLINT)) AS ano_lancamento,
+        COALESCE(t2.genero, t1.genero) AS generos,
+        t2.orcamento, 
+        t2.receita
+    FROM 
+        "meu-data-lake-sci-fi-fantasia-glue-data-catalog"."moviestmdb" t2 
+    FULL OUTER JOIN 
+        "meu-data-lake-sci-fi-fantasia-glue-data-catalog"."movieslocal" t1
+    ON
+        t2.imdb_id = t1.id
+    WHERE 
+        t2.receita > 0
+)
+--Verificar colunas com valores nulos
+SELECT
+    COUNT(*) AS total_records,
+    SUM(CASE WHEN id_imdb IS NULL OR id_imdb = '' OR id_imdb = '\N' THEN 1 ELSE 0 END) AS id_imdb_nulo,
+    SUM(CASE WHEN id_movie IS NULL THEN 1 ELSE 0 END) AS id_movie_nulo,
+    SUM(CASE WHEN titulo_principal IS NULL OR titulo_principal = '' OR titulo_principal = '\N' THEN 1 ELSE 0 END) AS titulo_principal_nulo,
+    SUM(CASE WHEN titulo_original IS NULL OR titulo_original = '' OR titulo_original = '\N' THEN 1 ELSE 0 END) AS titulo_original_nulo,
+    SUM(CASE WHEN data_lancamento IS NULL THEN 1 ELSE 0 END) AS data_lancamento_nulo,
+    SUM(CASE WHEN ano_lancamento IS NULL THEN 1 ELSE 0 END) AS ano_lancamento_nulo,
+    SUM(CASE WHEN generos IS NULL OR generos = '' OR generos = '\N' THEN 1 ELSE 0 END) AS genero_nulo,
+    SUM(CASE WHEN orcamento IS NULL THEN 1 ELSE 0 END) AS orcamento_nulo,
+    SUM(CASE WHEN receita IS NULL THEN 1 ELSE 0 END) AS receita_nulo
+FROM 
+    join_movies;

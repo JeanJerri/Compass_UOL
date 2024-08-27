@@ -1,0 +1,101 @@
+CREATE TABLE "meu-data-lake-sci-fi-fantasia-glue-data-catalog"."series" AS
+WITH join_series AS (
+    SELECT 
+        COALESCE(t2.imdb_id, t1.id) AS id_imdb,
+        CAST(t2.serie_id AS INT) AS id_serie,
+        COALESCE(t2.tituloprincipal, t1.tituloprincipal) AS titulo_principal,
+        COALESCE(t2.titulooriginal, t1.titulooriginal) AS titulo_original,
+        t2.paisoriginal AS pais_original,
+        COALESCE(NULLIF(TRIM(t2.idiomas), ''), t2.idiomaoriginal) AS idiomas,
+        t2.idiomaoriginal AS idioma_original,
+        CAST(t2.dataprimeiraexibicao AS DATE) AS data_primeira_exibicao,
+        CAST(t2.dataultimaexibicao AS DATE) AS data_ultima_exibicao,
+        COALESCE(CAST(t2.anoprimeiraexibicao AS SMALLINT), CAST(t1.anolancamento AS SMALLINT)) AS ano_lancamento,
+        COALESCE(CAST(t2.anoultimaexibicao AS SMALLINT), CAST(t1.anotermino AS SMALLINT)) AS ano_termino,
+        COALESCE(t2.genero, t1.genero) AS generos,
+        COALESCE(CAST(t2.minutosporepisodio AS VARCHAR), t1.tempominutos) AS tempo_minutos,
+        CAST(t2.numeroepisodios AS SMALLINT) AS numero_episodios,
+        CAST(t2.numerotemporadas AS SMALLINT) AS numero_temporadas,
+        CAST(t2.popularidade AS INT) AS popularidade,
+        COALESCE(CAST(t2.notamedia AS DOUBLE), CAST(t1.notamedia AS DOUBLE)) AS nota_media,
+        COALESCE(CAST(t2.numerovotos AS INT), CAST(t1.numerovotos AS INT)) AS numero_votos,
+        t2.status
+    FROM 
+        "meu-data-lake-sci-fi-fantasia-glue-data-catalog"."seriestmdb" t2 
+    FULL OUTER JOIN 
+        "meu-data-lake-sci-fi-fantasia-glue-data-catalog"."serieslocal" t1
+    ON
+        t2.imdb_id = t1.id
+    WHERE 
+        COALESCE(t2.genero, t1.genero) IS NOT NULL
+        AND popularidade IS NOT NULL
+),
+separar_linhas AS (
+    SELECT 
+        id_imdb,
+        id_serie,
+        titulo_principal,
+        titulo_original,
+        TRIM(p) AS pais_original,
+        TRIM(i) AS idiomas,
+        TRIM(i_o) AS idioma_original,
+        data_primeira_exibicao,
+        data_ultima_exibicao,
+        ano_lancamento,
+        ano_termino,
+        TRIM(g) AS genero,
+        CAST(NULLIF(tempo_minutos, '\N') AS SMALLINT) AS tempo_minutos, --Deixar nulo o valor que não dava pra ser convertido pra um tipo numérico
+        numero_episodios,
+        numero_temporadas,
+        popularidade,
+        nota_media,
+        numero_votos,
+        status
+    FROM 
+        join_series,
+        UNNEST(SPLIT(pais_original, ',')) AS t(p),
+        UNNEST(SPLIT(idiomas, ',')) AS t(i),
+        UNNEST(SPLIT(idioma_original, ',')) AS t(i_o),
+        UNNEST(SPLIT(generos, ',')) AS t(g)
+),
+join_generos AS (
+    SELECT 
+        eg.*,
+        g.id AS id_genero
+    FROM 
+        separar_linhas eg
+    LEFT JOIN 
+        (SELECT 
+            id, 
+            name 
+         FROM 
+            "meu-data-lake-sci-fi-fantasia-glue-data-catalog"."generosseries"
+        ) g
+    ON 
+        eg.genero = g.name
+)
+SELECT 
+    id_imdb,
+    id_serie,
+    titulo_principal,
+    titulo_original,
+    pais_original,
+    idiomas,
+    idioma_original,
+    data_primeira_exibicao,
+    data_ultima_exibicao,
+    ano_lancamento,
+    ano_termino,
+    id_genero,
+    genero,
+    tempo_minutos,
+    numero_episodios,
+    numero_temporadas,
+    popularidade,
+    nota_media,
+    numero_votos,
+    status
+FROM 
+    join_generos
+ORDER BY 
+    id_imdb;
