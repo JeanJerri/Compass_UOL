@@ -37,9 +37,10 @@ E para os IDs da série, fiz a junção de duas funções, a buscar_external_ids
 - [Resultado da execução(TMDb)](../Desafio/etapa-0/evidencias/Screenshot_663.png)
 
 - Adicionei o endereço das 2 pastas no crawler para gerar as duas tabela de gêneros. Atualizei e gerei as novas tabelas:
-    ![Crawler](../Desafio/etapa-1/evidencias/Screenshot_664.png)
-    - [Tabelas no AWS Glue](../Desafio/etapa-1/evidencias/Screenshot_665.png)
-    - [Tabelas no AWS Athena](../Desafio/etapa-1/evidencias/Screenshot_666.png)
+    
+    [Crawler](../Desafio/etapa-0/evidencias/Screenshot_664.png)
+    - [Tabelas no AWS Glue](../Desafio/etapa-0/evidencias/Screenshot_665.png)
+    - [Tabelas no AWS Athena](../Desafio/etapa-0/evidencias/Screenshot_666.png)
 
     
 # Entrega 4
@@ -50,11 +51,11 @@ E para os IDs da série, fiz a junção de duas funções, a buscar_external_ids
     - Após o join, fiz a separação de dados na coluna gêneros no join de filmes, e nas colunas país_original, idiomas, idioma_original e gêneros no join de séries.
     - Por fim, fiz o join com as tabelas de gêneros para incluir o ID dos gêneros nas tabelas de filmes e séries.
     - Também fiz uma query à parte para verificar a existência de valores nulos e tratá-los, caso fosse necessário.
-        [query_join_movies.txt](../Desafio/etapa-1/query_join_movies.txt)
-        [query_join_series.txt](../Desafio/etapa-1/query_join_series.txt)
-        [query nulos em movies.txt](../Desafio/etapa-1/query%20nulos%20em%20movies.txt)
+        - [query_join_movies.txt](../Desafio/etapa-1/query_join_movies.txt)
+        - [query_join_series.txt](../Desafio/etapa-1/query_join_series.txt)
+        - [query nulos em movies.txt](../Desafio/etapa-1/query%20nulos%20em%20movies.txt)
             ![query nulos em movies](../Desafio/etapa-1/evidencias/Screenshot_668.png)
-        [query nulos em series.txt](../Desafio/etapa-1/query%20nulos%20em%20series.txt)
+        - [query nulos em series.txt](../Desafio/etapa-1/query%20nulos%20em%20series.txt)
             ![query nulos em series](../Desafio/etapa-1/evidencias/Screenshot_669.png)
 
 2. Como no Lab AWS Glue da sprint 7 foi feito a configuração para utilizar o AWS Glue e foi criado a IAM Role para os jobs do AWS Glue, não precisei fazer essa parte novamente.
@@ -79,6 +80,7 @@ E para os IDs da série, fiz a junção de duas funções, a buscar_external_ids
     - Separei as colunas entre dataframes diferentes para formar as dimensões filmes, datas, gêneros e a fato lucro_filmes.
     - No final, salvei os arquivos transformados e particionados no formato PARQUET na camada refined no bucket do desafio.
         ![Refined/movies/](../Desafio/etapa-1/evidencias/Screenshot_672.png)
+        
     - Modelo Dimensional:
         ![Modelo Dimensional Análise Movies](../Desafio/etapa-1/Modelo%20Dimensional%20Análise%20Movies.png)
 
@@ -90,6 +92,7 @@ E para os IDs da série, fiz a junção de duas funções, a buscar_external_ids
     - Separei as colunas entre dataframes diferentes para formar as dimensões series, primeira_exibicao, ultima_exibicao, generos, idiomas, duracao e a fato formato_series.
     - Por fim, salvei os arquivos transformados e particionados no formato PARQUET na camada refined do bucket do desafio.
         ![Refined/series/](../Desafio/etapa-1/evidencias/Screenshot_673.png)
+        
     - Modelo Dimensional:
         ![Modelo Dimensional Análise Séries](../Desafio/etapa-1/Modelo%20Dimensional%20Análise%20Series.png)
 
