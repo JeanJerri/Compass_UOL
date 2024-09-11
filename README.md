@@ -67,17 +67,20 @@ Olá, sou Jean Jerri Rocha Bento da Silva, moro na cidade de Barra do Choça - B
 ## 3. [Sprint 3](./Sprint%203/README.md)
 
 
-###
-
-###
+### Curso: Python 3
+- Aprendi o básico da programação em Python, como executar e seus fundamentos.
+- Aprendi quais são as estruturas de controle e a manipular arquivos.
+- Aprendi como utilizar funções e pacotes.
+- E aprendi também como utilizar a orientação a objetos com Pyhton.
 
 
 ## 4. [Sprint 4](./Sprint%204/README.md)
 
 
-###
-
-###
+### Curso: Docker para Desenvolvedores
+- Aprendi como trabalhar e executar Containers
+- Como criar imagens.
+- Como gerenciar imagens e containers.
 
 
 ## 5. [Sprint 5](./Sprint%205/README.md)
@@ -103,34 +106,70 @@ Olá, sou Jean Jerri Rocha Bento da Silva, moro na cidade de Barra do Choça - B
 ## 6. [Sprint 6](./Sprint%206/README.md)
 
 
-###
+### Cursos AWS Skill Builder
+- Vi como funciona vários serviços da AWS.
+- Aprendi o básico sobre serviços como o Glue, o Athe e o Quick Sight.
 
-###
+### Desafio da Sprint
+- Aprendi como fazer ingestão de dados locais em um bucket.
+- Aprendi como utilizar o python, docker e as credenciais da AWS para realizar esse processo.
 
 
 ## 7. [Sprint 7](./Sprint%207/README.md)
 
 
-###
+### Desafio da Sprint
+- Aprendi melhor como funciona o Aws Lambda.
+- Como criar camadas com bibliotecas do python.
+- Aprendi como utilizar o python para fazer consultas em APIs.
+- Aprendi salvar dados em um bucket através do lambda.
+- Aprendi como dar permissões na AWS e como configurar o lambda.
 
-###
+### Curso: Formação Spark com Pyspark
+- Aprendi o que é o Spark e como utiliza-lo
+- Aprendi o que são dataframes.
+- Aprendi como utilizar o Spark SQL.
 
 
 ## 8. [Sprint 8](./Sprint%208/README.md)
 
 
-###
-
-###
+### Desafio da Sprint
+- Nesse desafio coloquei em prática o que aprendi no lab do AWS Glue na sprint passada.
+- Aprendi a criar e configurar um banco de dados e como dar permissão ao usuário para executar algumas ações.
+- Também aprendi a como usar o AWS Glue e executar códigos através dele, além de entender como funciona o log e a depuração de erros.
+- Também aprendi como executo um crawler e como criar tabelas para executar consultas no AWS Athena.
 
 
 ## 9. [Sprint 9](./Sprint%209/README.md)
+
 
 ### Desafio da Sprint
 - Aprendi na prática a diferença de processamento de dados com o uso do PySpark.
 - Pratiquei os conhecimentos sobre modelagem de dados e SQL visto nas sprints anterioes.
 - Aprimorei minha análise visando a apresentação consistente das respostas e na análise dos dados.
 - Aprimorei os conhecimentos adquiridos na sprint anterior já que o processo foi bem parecido.
+
+
+## 10. [Sprint 10](./Sprint%2010/README.md)
+
+
+### Curso: Introdução ao Amazon QuickSight
+- Aprendi como utilizar ações, filtros e controles.
+- Aprendi como criar gráficos e utilizar seus diferentes tipos.
+- Aprendi como calcular campos e a preparar os dados.
+
+### Data & Analytics
+- Aprendi o que é e como funciona o Storytelling.
+- Aprendi como desenvolver o Storytelling.
+- Aprendi quais tabelas são melhores para representar certos tipos de dados
+
+### Desafio da Sprint
+- Aprendi a utilizar o conjunto de dados através do Aws Athena.
+- Aprendi como modificar e criar novas colunas de dados no QuickSight.
+- Aprendi como modificar as cores, fontes e o tema de um Dashboard.
+- Aprendi como criar e exportar um Dashboard.
+- Aprimorei minha análise de dados.
 
 
 ___
