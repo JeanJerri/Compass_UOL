@@ -17,3 +17,9 @@
 
 - [Entrega do Desafio](../Sprint%208/Desafio/README.md)
 
+
+# Certificados
+
+
+- Certificado do Data & Analytics 8/10
+[Data & Analytics 8/10](./certificados/Data%20&%20Analytics%208.pdf)

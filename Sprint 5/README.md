@@ -14,3 +14,6 @@
 - Certificado do Curso-padrão de preparação para o exame: AWS Certified Cloud Practitioner (CLF-C02)
 
     [Curso-padrão de preparação para o exame: AWS Certified Cloud Practitioner (CLF-C02)](../Sprint%205/certificados/Certificado%20do%20Curso-padrão%20de%20preparação%20para%20o%20exame%20AWS%20Certified%20Cloud%20Practitioner%20(CLF-C02).pdf)
+
+- Certificado do Data & Analytics 5/10
+[Data & Analytics 5/10](./certificados/Data%20&%20Analytics%205.pdf)

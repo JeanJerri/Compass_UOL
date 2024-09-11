@@ -40,3 +40,5 @@
 - Certificado do Curso Métodos Ágeis de A a Z
 [Curso Métodos Ágeis de A a Z](../Sprint%204/certificados/Curso%20Métodos%20ágeis%20de%20A%20a%20Z.pdf)
 
+- Certificado do Data & Analytics 4/10
+[Data & Analytics 4/10](./certificados/Data%20&%20Analytics%204.pdf)

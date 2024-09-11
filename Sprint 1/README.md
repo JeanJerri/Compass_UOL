@@ -11,3 +11,10 @@
 
 
 - [Entrega do Desafio](../Sprint%201/Desafio/)
+
+
+# Certificados
+
+
+- Certificado do Data & Analytics 1/10
+[Data & Analytics 1/10](./certificados/Data%20&%20Analytics%201.pdf)

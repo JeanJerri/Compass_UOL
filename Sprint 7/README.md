@@ -78,3 +78,10 @@ for (word, count) in counts.collect():
 
 
 - [Entrega do Desafio](../Sprint%207/Desafio/README.md)
+
+
+# Certificados
+
+
+- Certificado do Data & Analytics 7/10
+[Data & Analytics 7/10](./certificados/Data%20&%20Analytics%207.pdf)

@@ -110,3 +110,6 @@
 
 - Certificado do Curso Amazon QuickSight - Getting Started
 [Amazon QuickSight - Getting Started](../Sprint%206/certificados/Amazon%20QuickSight%20-%20Getting%20Started.pdf)
+
+- Certificado do Data & Analytics 6/10
+[Data & Analytics 6/10](./certificados/Data%20&%20Analytics%206.pdf)

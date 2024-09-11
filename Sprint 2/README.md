@@ -27,3 +27,6 @@
 
 - Certificado do Curso SQL para Análise de Dados
 [Curso SQL para Análise de Dados](../Sprint%202/certificados/Curso%20SQL%20para%20Análise%20de%20Dados.pdf)
+
+- Certificado do Data & Analytics 2/10
+[Data & Analytics 2/10](./certificados/Data%20&%20Analytics%202.pdf)

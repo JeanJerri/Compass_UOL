@@ -74,3 +74,6 @@
 
 - Certificado do Curso Parceiro AWS: Economias na Nuvem
 [Curso Parceiro AWS: Economias na Nuvem](../Sprint%203/certificados/Curso%20Parceiro%20AWS%20Aspectos%20econômicos%20da%20nuvem.pdf)
+
+- Certificado do Data & Analytics 3/10
+[Data & Analytics 3/10](./certificados/Data%20&%20Analytics%203.pdf)
